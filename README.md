@@ -2,6 +2,6 @@
 A manual and an automatic compressing algo
 
 
-#Todo
+# Todo
 -on the manual finish the decompression algo
 -Make a fully automatic version using Huffman coding
