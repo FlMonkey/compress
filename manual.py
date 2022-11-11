@@ -6,9 +6,11 @@ codes=['$001', '$002', '$003', '$004', '$005', '$006', '$007', '$008', '$009', '
 '$085', '$086', '$087', '$088', '$089', '$090', '$091', '$092', '$093', '$094', '$095', '$096', '$097', '$098', '$099', '$100', '$101', '$102', '$103', '$104', '$105', '$106', '$107', '$108', '$109', '$110',
  '$111', '$112', '$113', '$114', '$115', '$116', '$117', '$118', '$119', '$120', '$121', '$122', '$123', '$124', '$125', '$126', '$127', '$128']
 lens = 0
+cntdwn = 0
 decryptbl = {}
 cont = True
-
+decomp = [] 
+temp = []
 while True:
     #prompt the user
     
@@ -29,13 +31,31 @@ while True:
     else:
         continue
 
-while cont is True:
-    for element in text:
-        if element == "$":
-            #use replace() to replace the element + the next 3 elements with the corespointing value in the dictionary, could make it skip the next 3 elements when $ is detected
-            print(text)
-            
-
+print(text)
+for element in text:
+    print("current element is " + element)
+    
+    if element == "$":
+        #use replace() to replace the element + the next 3 elements with the corespointing value in the dictionary, could make it skip the next 3 elements when $ is detected
+        temp = list(temp)
+        temp.append(element)
+        cntdwn = 3 
+        print("temp" + str(temp))
+    elif cntdwn > 0:
+        temp.append(element)
+        print("temp" + str(temp))
+        cntdwn = cntdwn - 1
+    if len(temp) == 4:
+        temp = "".join(temp)
+        print(decryptbl)
+        print("this is str temp" + temp)
+        decomp.append(decryptbl.get(temp))
+        print("this is the coresponding value" + decryptbl.get("".join(temp)))
+        temp = []
+    else:
+        print("doing this")
+        decomp.append(element)
+print("".join(decomp))
 
 '''
 #code generator
