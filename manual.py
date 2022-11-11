@@ -37,19 +37,21 @@ for element in text:
     
     if element == "$":
         #use replace() to replace the element + the next 3 elements with the corespointing value in the dictionary, could make it skip the next 3 elements when $ is detected
+        print("found a $")
         temp = list(temp)
         temp.append(element)
         cntdwn = 3 
         print("temp" + str(temp))
+        
     elif cntdwn > 0:
         temp.append(element)
         print("temp" + str(temp))
         cntdwn = cntdwn - 1
-    if len(temp) == 4:
+    elif len(temp) == 4:
         temp = "".join(temp)
         print(decryptbl)
         print("this is str temp" + temp)
-        decomp.append(decryptbl.get(temp))
+        decomp.append(decryptbl.get(temp) + " ")
         print("this is the coresponding value" + decryptbl.get("".join(temp)))
         temp = []
     else:
